@@ -11,17 +11,26 @@ const BeerList = props => {
 
     return (
         <div className="beerList">
-            <p>Testing Beer List</p>
-            
+            {props.isLoading && <h4>Loading mission data...</h4>}
+            {props.error && (
+                <p className="error">Something went wrong, please try again later... {props.error}</p>
+            )}
+            {props.beers.length > 0 && (
+                <div>
+                    {props.beers.map(beer => (
+                    <div key={beer.id}>{beer.name}</div>
+                    ))}
+                </div>
+            )}   
         </div>
-    )
+    );
 };
 
 const mapStateToProps = state => {
     return {
         isLoading: state.isLoading,
         beers: state.beers,
-        error: state.err
+        error: state.error
     }
 };
 
