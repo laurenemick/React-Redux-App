@@ -16,9 +16,13 @@ const BeerList = props => {
                 <p className="error">Something went wrong, please try again later... {props.error}</p>
             )}
             {props.beers.length > 0 && (
-                <div>
+                <div className="beerContainer">
                     {props.beers.map(beer => (
-                    <div key={beer.id}>{beer.name}</div>
+                    <div className="beer" key={beer.id}>
+                        <img src={beer.image_url} alt={beer.name} />
+                        <p>{beer.name}</p>
+                        <button>Details</button>
+                    </div>
                     ))}
                 </div>
             )}   
